@@ -29,6 +29,7 @@ const Html5QrcodePlugin = (props) => {
         const verbose = props.verbose === true;
         // Suceess callback is required.
         if (!(props.qrCodeSuccessCallback)) {
+            // eslint-disable-next-line no-throw-literal
             throw "qrCodeSuccessCallback is required callback.";
         }
         const html5QrcodeScanner = new Html5QrcodeScanner(qrcodeRegionId, config, verbose);
@@ -40,7 +41,7 @@ const Html5QrcodePlugin = (props) => {
                 console.error("Failed to clear html5QrcodeScanner. ", error);
             });
         };
-    }, []);
+    }, [props]);
 
     return (
         <div id={qrcodeRegionId} />
